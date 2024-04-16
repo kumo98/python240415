@@ -6,7 +6,8 @@ class DemoString:
     def set(self, msg):
         self.strName = msg
     def print(self):
-        print(str)
+        # 전역변수 참조
+        print(strName)
 
 d = DemoString()
 d.set("First Message")
