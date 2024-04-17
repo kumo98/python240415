@@ -2,12 +2,13 @@
 
 import sqlite3
 
-con = sqlite3.connect(':memory:')
+# con = sqlite3.connect(':memory:')
+con = sqlite3.connect('c:\\work\\sample.db')
 
 cur = con.cursor()
 
 #테이블 생성
-cur.execute('create table PhoneBook(Name text, PhoneNum text);')
+cur.execute('create table if not exists PhoneBook(Name text, PhoneNum text);')
 
 #1건 입력
 cur.execute('insert into PhoneBook values("홍길동","010-1111-2222");')
@@ -30,11 +31,7 @@ cur.execute('select * from PhoneBook;')
 # for row in cur:
 #     print(row)
 
-print('one')
-print(cur.fetchone())
-print('many')
-print(cur.fetchmany(2))
-
-cur.execute('select * from PhoneBook;')
-print('all')
 print(cur.fetchall())
+
+#작업 완료
+con.commit()
